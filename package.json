@@ -1,0 +1,51 @@
+{
+	"name": "aufklebung",
+	"version": "0.0.0",
+	"packageManager": "^npm@10.5.2",
+	"scripts": {
+		"build": "next build",
+		"dev": "LOCALHOST=1 run-p dev:next",
+		"dev:next": "next dev",
+		"format": "npx prettier --write .",
+		"start": "next start",
+		"test": "run-p test:lint test:types",
+		"test:lint": "eslint --max-warnings 0 --cache --ext js,jsx,ts,tsx --ignore-path .gitignore .",
+		"test:types": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@fontsource/ibm-plex-mono": "^5.0.13",
+		"@fontsource/ibm-plex-sans": "^5.0.20",
+		"@t3-oss/env-nextjs": "^0.10.1",
+		"@tanstack/react-query": "^5.51.9",
+		"dotenv": "^16.4.5",
+		"lodash": "^4.17.21",
+		"next": "14.2.3",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"tsx": "^4.16.2",
+		"uberschrift": "^1.1.13",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"@tailwindcss/typography": "^0.5.13",
+		"@types/lodash": "^4.17.7",
+		"@types/node": "^20.14.11",
+		"@types/react": "^18.3.3",
+		"@types/react-dom": "^18.3.0",
+		"autoprefixer": "^10.4.19",
+		"eslint": "^8.57.0",
+		"eslint-config-next": "14.2.3",
+		"eslint-config-peerigon": "^39.1.0",
+		"eslint-plugin-canonical": "^4.18.1",
+		"eslint-plugin-jsx-a11y": "^6.9.0",
+		"eslint-plugin-react": "^7.34.4",
+		"eslint-plugin-react-hooks": "^4.6.2",
+		"eslint-plugin-storybook": "^0.8.0",
+		"npm-run-all": "^4.1.5",
+		"postcss": "^8.4.39",
+		"prettier": "^3.3.3",
+		"prettier-plugin-tailwindcss": "^0.6.5",
+		"tailwindcss": "^3.4.6",
+		"typescript": "^5.5.3"
+	}
+}
