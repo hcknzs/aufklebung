@@ -68,8 +68,8 @@ export const stickers = [
 		initialValues: {
 			backgroundColor: "#000",
 			foregroundColor: "#fff",
-			text1: "IIIIIIIIIIIIIIIIIII",
-			text2: "IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII",
+			text1: "Lorem ipsum",
+			text2: "Dolor sit amet!",
 			url: "",
 		},
 		renderer: antifaStickerRenderer,

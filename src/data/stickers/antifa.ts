@@ -16,7 +16,7 @@ export const antifaStickerRenderer: StickerRenderer = async (params, ctx) => {
 	ctx.drawImage(img, 0, 0, ctx.canvas.width, ctx.canvas.height);
 	const config = {
 		ctx,
-		radius: halfWidth - 60,
+		radius: halfWidth - 75,
 		fillStyle: params.foregroundColor,
 		font: "100px IBM Plex Mono",
 		angleCalculation: "auto",
