@@ -6,9 +6,10 @@ export const antifaStickerRenderer: StickerRenderer = async (params, ctx) => {
 
 	const img = new Image();
 	img.src = "/antifa-flag.svg";
-	await new Promise((resolve) => {
-		img.onload = resolve;
-	});
+
+	if (!img.complete) {
+		await new Promise((resolve) => (img.onload = resolve));
+	}
 
 	// wait for font to load
 	await document.fonts.load("100px IBM Plex Mono");
