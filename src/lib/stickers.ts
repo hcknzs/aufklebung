@@ -50,6 +50,28 @@ export const stickers = [
 		renderer: antifaStickerRenderer,
 	},
 	{
+		slug: "antifa",
+		shape: "circle",
+		name: "Antifa Sticker",
+		thumbnailSrc:
+			"https://media2.giphy.com/media/ZJaXOsbM012mRodFiQ/giphy.gif?cid=47028fa8sx12d824xrvy8zo8bq3w00f23hoj11gqqzus7q0f&ep=v1_gifs&rid=giphy.gif&ct=g",
+		parameters: {
+			text1: true,
+			text2: true,
+			backgroundColor: false,
+			foregroundColor: false,
+			url: false,
+		},
+		initialValues: {
+			backgroundColor: "#000",
+			foregroundColor: "#fff",
+			text1: "Augsburg",
+			text2: "",
+			url: "",
+		},
+		renderer: antifaStickerRenderer,
+	},
+	{
 		slug: "uhm-actually",
 		shape: "square",
 		name: "Uhm, actually...",
