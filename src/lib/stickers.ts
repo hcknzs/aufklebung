@@ -94,11 +94,14 @@ export const stickers = [
 			text2: "",
 			url: "",
 		},
-		renderer: typoStyle(
-			["ganz", "liebt", "Demokratie!"],
-			1,
-			"200px 'Bagel Fat One'",
-		),
+		renderer: typoStyle({
+			font: "200px 'Bagel Fat One'",
+			gap: 20,
+			margin: 40,
+			letterSpacing: 0,
+			textPieces: ["ganz", "liebt", "Demokratie!"],
+			textOffset: 1,
+		}),
 	},
 	{
 		slug: "enteignen",
@@ -120,7 +123,14 @@ export const stickers = [
 			text2: "",
 			url: "",
 		},
-		renderer: typoStyle(["enteignen!"], 0, "200px Anton", 100),
+		renderer: typoStyle({
+			font: "200px 'Anton'",
+			gap: 40,
+			margin: 80,
+			letterSpacing: 0,
+			textPieces: ["enteignen!"],
+			textOffset: 0,
+		}),
 	},
 	{
 		slug: "uhm-actually",

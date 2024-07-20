@@ -75,7 +75,7 @@ export const renderCircularText = (
 	}
 };
 
-export const renderWidthScaledText = (props: {
+export const prepareRenderWithScaledText = (props: {
 	ctx: CanvasRenderingContext2D;
 	text: string;
 	letterSpacing: number;
@@ -129,6 +129,26 @@ export const renderWidthScaledText = (props: {
 		}
 	}
 
-	ctx.fillText(text, props.x, props.y);
-	return predictedHeight;
+	return {
+		height: ctx.measureText(text).actualBoundingBoxAscent,
+		width: ctx.measureText(text).width,
+		fontSize: newFontSize,
+		letterSpacing: props.letterSpacing,
+	};
+};
+
+export const renderWidthScaledText = (props: {
+	ctx: CanvasRenderingContext2D;
+	text: string;
+	letterSpacing: number;
+	font: string;
+	maxWidth: number;
+	y: number;
+	x: number;
+	maxHeight?: number;
+	scaleLetterSpacing?: boolean;
+	fillStyle?: string;
+}) => {
+	prepareRenderWithScaledText(props);
+	props.ctx.fillText(props.text, props.x, props.y);
 };

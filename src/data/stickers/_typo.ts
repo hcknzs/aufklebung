@@ -1,32 +1,42 @@
 import "@fontsource/bagel-fat-one";
 import "@fontsource/anton";
 
-import { renderWidthScaledText } from "@/lib/canvas-helper";
+import {
+	prepareRenderWithScaledText,
+	renderWidthScaledText,
+} from "@/lib/canvas-helper";
 import { StickerRenderer } from "@/lib/stickers";
 
 export const typoStyle =
-	(
-		textPieces: Array<string>,
-		textOffset: number,
-		font: string,
-		baseOffset = 0,
-	): StickerRenderer =>
+	({
+		textPieces,
+		textOffset,
+		font,
+		gap,
+		margin,
+		letterSpacing = 1,
+	}: {
+		textPieces: Array<string>;
+		textOffset: number;
+		font: string;
+		gap: number;
+		margin: number;
+		letterSpacing?: number;
+	}): StickerRenderer =>
 	async (params, ctx) => {
 		// wait for font to load
 		await document.fonts.load(font);
 		ctx.fillStyle = params.backgroundColor;
 		ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-		const letterSpacing = 0;
+		const maxWidth = ctx.canvas.width - 2*margin;
 
 		// render text
 		ctx.fillStyle = params.foregroundColor;
+		ctx.textBaseline = "alphabetic";
 		ctx.textAlign = "center";
-		ctx.textBaseline = "top";
-
 		ctx.font = font;
 		ctx.letterSpacing = letterSpacing + "px";
-		ctx.textBaseline = "top";
 
 		const text = params.text1.length < 5 ? "xxxxx" : params.text1;
 
@@ -36,38 +46,42 @@ export const typoStyle =
 			...textPieces.slice(textOffset),
 		];
 
-		let topOffset = baseOffset;
+		let topOffset = 0;
 
-		for (const word of words) {
-			const offset = renderWidthScaledText({
+		const predictedSizes = words.map((word) =>
+			prepareRenderWithScaledText({
 				ctx,
 				text: word.toUpperCase(),
 				letterSpacing,
 				font,
-				maxWidth: ctx.canvas.width - 80,
-				maxHeight: 400,
+				maxWidth,
+				maxHeight: 600,
+				scaleLetterSpacing: false,
+				y: 0,
+				x: 0,
+			}),
+		);
+
+		const totalHeight = predictedSizes.reduce(
+			(acc, val) => acc + val.height + gap,
+			gap / 2,
+		);
+		topOffset = (ctx.canvas.height - totalHeight) / 2;
+
+		words.forEach((word, index) => {
+			// @ts-expect-error i'm sure it is defined
+			topOffset += gap + predictedSizes[index].height;
+
+			renderWidthScaledText({
+				ctx,
+				text: word.toUpperCase(),
+				letterSpacing,
+				font,
+				maxWidth,
+				maxHeight: 600,
 				scaleLetterSpacing: false,
 				y: topOffset,
 				x: ctx.canvas.width / 2,
 			});
-
-			topOffset += offset * 1.1;
-		}
-
-		// get canvas img data
-		const imgData = ctx.getImageData(
-			0,
-			0,
-			ctx.canvas.width,
-			ctx.canvas.height,
-		);
-
-		// draw new background
-		ctx.fillStyle = params.backgroundColor;
-		ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-
-		const marginTop = (ctx.canvas.height - topOffset) / 2 - 20;
-
-		// draw img data to canvas
-		ctx.putImageData(imgData, 0, marginTop);
+		});
 	};
