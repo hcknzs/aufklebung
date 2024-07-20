@@ -55,7 +55,7 @@ export const stickers = [
 	{
 		slug: "antifa",
 		shape: "circle",
-		name: "Antifa Sticker",
+		name: "Antifaschistische Aktion",
 		thumbnailSrc:
 			"https://media2.giphy.com/media/ZJaXOsbM012mRodFiQ/giphy.gif?cid=47028fa8sx12d824xrvy8zo8bq3w00f23hoj11gqqzus7q0f&ep=v1_gifs&rid=giphy.gif&ct=g",
 		parameters: {
@@ -96,7 +96,7 @@ export const stickers = [
 		renderer: typoStyle({
 			font: "200px 'Bagel Fat One'",
 			gap: 20,
-			margin: 40,
+			margin: 80,
 			letterSpacing: 0,
 			textPieces: ["ganz", "liebt", "Demokratie!"],
 			textOffset: 1,

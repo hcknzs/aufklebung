@@ -29,7 +29,7 @@ export const typoStyle =
 		ctx.fillStyle = params.backgroundColor;
 		ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-		const maxWidth = ctx.canvas.width - 2*margin;
+		const maxWidth = ctx.canvas.width - 2 * margin;
 
 		// render text
 		ctx.fillStyle = params.foregroundColor;
