@@ -1,4 +1,6 @@
 import { antifaStickerRenderer } from "@/data/stickers/antifa";
+import { frownieRenderer } from "@/data/stickers/frownie";
+import { innenRenderer } from "@/data/stickers/innen";
 import { xNeinDankeStickerRenderer } from "@/data/stickers/x-nein-danke";
 
 export type StickerParams = {
@@ -28,26 +30,26 @@ export const STICKER_SIZE = 1080;
 
 export const stickers = [
 	{
-		slug: "hasst-die-afd",
+		slug: "frownie",
 		shape: "circle",
-		name: "Ganz … hasst die AfD!",
+		name: "Frownie",
 		thumbnailSrc:
 			"https://media2.giphy.com/media/ZJaXOsbM012mRodFiQ/giphy.gif?cid=47028fa8sx12d824xrvy8zo8bq3w00f23hoj11gqqzus7q0f&ep=v1_gifs&rid=giphy.gif&ct=g",
 		parameters: {
-			text1: true,
+			text1: false,
 			text2: false,
 			backgroundColor: true,
 			foregroundColor: true,
 			url: false,
 		},
 		initialValues: {
-			backgroundColor: "#000",
-			foregroundColor: "#fff",
-			text1: "Augsburg",
+			backgroundColor: "#009ee0",
+			foregroundColor: "#C1152D",
+			text1: "",
 			text2: "",
 			url: "",
 		},
-		renderer: antifaStickerRenderer,
+		renderer: frownieRenderer,
 	},
 	{
 		slug: "antifa",
@@ -107,13 +109,13 @@ export const stickers = [
 			url: false,
 		},
 		initialValues: {
-			backgroundColor: "#000000",
-			foregroundColor: "#FFFFFF",
+			backgroundColor: "#9c1c2b",
+			foregroundColor: "#f8ffe7",
 			text1: "",
 			text2: "",
 			url: "",
 		},
-		renderer: () => {},
+		renderer: innenRenderer,
 	},
 ] satisfies Array<StickerInfo>;
 
