@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { Sticker, stickerRenderers } from "@/data/stickers";
+import { Sticker, stickerRenderers } from "@/data/stickers/stickers";
 
 export const Canvas: React.FC<{
 	sticker: Sticker;

@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Canvas } from "@/components/canvas/canvas";
-import { Sticker, stickerConfig } from "@/data/stickers";
+import { Sticker, stickerConfig } from "@/data/stickers/stickers";
 
 const App = () => {
 	const [sticker, setSticker] = useState<Sticker>(stickerConfig.antifa);
