@@ -49,7 +49,7 @@ export const Canvas: React.FC<{
 	}, [props.stickerInfo, props.stickerParams]);
 
 	return (
-		<div className="px-5">
+		<>
 			<div className="m-auto my-6 flex w-min flex-col gap-12">
 				<div className="rounded-3xl bg-white p-5">
 					<canvas
@@ -80,6 +80,6 @@ export const Canvas: React.FC<{
 					Download
 				</Button>
 			</div>
-		</div>
+		</>
 	);
 };
