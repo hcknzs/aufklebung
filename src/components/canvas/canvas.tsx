@@ -38,7 +38,7 @@ export const Canvas: React.FC<{
 					ref={canvasRef}
 					width={STICKER_SIZE}
 					height={STICKER_SIZE}
-					className={`h-72 ${props.stickerInfo.shape === "square" ? "rounded-md" : "rounded-full"}`}
+					className={`size-96 ${props.stickerInfo.shape === "square" ? "rounded-md" : "rounded-full"}`}
 				/>
 			</div>
 

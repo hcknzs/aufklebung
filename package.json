@@ -13,7 +13,6 @@
 		"test:types": "tsc --noEmit"
 	},
 	"dependencies": {
-		"@fontsource/bagel-fat-one": "^5.0.6",
 		"@fontsource/ibm-plex-mono": "^5.0.13",
 		"@fontsource/ibm-plex-sans": "^5.0.20",
 		"@t3-oss/env-nextjs": "^0.10.1",
