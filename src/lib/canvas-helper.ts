@@ -56,14 +56,12 @@ export const renderCircularText = (
 			let fontSize = parseInt(ctx.font);
 			if (isNaN(fontSize)) fontSize = 0;
 
-			ctx.translate(ctx.canvas.width / 2, ctx.canvas.height / 2);
-
 			ctx.rotate(totalAngle / 2 + props.letterAngle);
 
 			for (const char of text) {
 				ctx.rotate(-props.letterAngle);
 				ctx.save();
-				// the 0.1 * fontSize makes it look more centered
+				// the 0.1 * fontSize makes it look more symmetrical
 				ctx.translate(0, radius + 0.1 * fontSize);
 				ctx.fillText(char, 0, 0);
 				ctx.restore();
