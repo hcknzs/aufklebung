@@ -39,8 +39,8 @@ export const stickers = [
 		parameters: {
 			text1: false,
 			text2: false,
-			backgroundColor: true,
-			foregroundColor: true,
+			backgroundColor: false,
+			foregroundColor: false,
 			url: false,
 		},
 		initialValues: {
@@ -78,8 +78,7 @@ export const stickers = [
 		slug: "ganz-x-liebt-demokratie",
 		shape: "square",
 		name: "Ganz … liebt Demokratie",
-		thumbnailSrc:
-			"https://media3.giphy.com/media/Y01jP8QeLOox2/giphy.gif?cid=47028fa8sx12d824xrvy8zo8bq3w00f23hoj11gqqzus7q0f&ep=v1_gifs&rid=giphy.gif&ct=g",
+		thumbnailSrc: "/ganz.gif",
 		parameters: {
 			text1: true,
 			text2: false,
@@ -146,11 +145,11 @@ export const stickers = [
 			url: true,
 		},
 		initialValues: {
-			backgroundColor: "#157A6E",
-			foregroundColor: "#82f4BB",
+			backgroundColor: "",
+			foregroundColor: "",
 			text1: "",
 			text2: "",
-			url: "https://hcknzs.com",
+			url: "https://de.wikipedia.org/wiki/COVID-19",
 		},
 		renderer: uhmActuallySticker,
 	},
@@ -158,8 +157,7 @@ export const stickers = [
 		slug: "-innen",
 		shape: "square",
 		name: "*INNEN",
-		thumbnailSrc:
-			"https://media3.giphy.com/media/Y01jP8QeLOox2/giphy.gif?cid=47028fa8sx12d824xrvy8zo8bq3w00f23hoj11gqqzus7q0f&ep=v1_gifs&rid=giphy.gif&ct=g",
+		thumbnailSrc: "/innen.gif",
 		parameters: {
 			text1: false,
 			text2: false,
@@ -168,7 +166,7 @@ export const stickers = [
 			url: false,
 		},
 		initialValues: {
-			backgroundColor: "#9c1c2b",
+			backgroundColor: "#8a3fa5",
 			foregroundColor: "#f8ffe7",
 			text1: "",
 			text2: "",

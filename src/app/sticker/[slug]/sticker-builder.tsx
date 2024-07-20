@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { getStickerInfoBySlug, stickers } from "@/lib/stickers";
 import { Canvas } from "@/components/canvas/canvas";
+import { Button } from "@/components/ui/button";
+import { ColorButton } from "@/components/color-button";
+import { Input } from "@/components/ui/input";
 
 export const StickerBuilder: React.FC<{
 	slug: (typeof stickers)[number]["slug"];
@@ -16,12 +19,13 @@ export const StickerBuilder: React.FC<{
 	);
 
 	return (
-		<>
+		<Canvas stickerInfo={stickerInfo} stickerParams={stickerParams}>
 			{/* TODO: make this nice (code cleanup, debouncing, layout, performance) */}
 			{stickerInfo.parameters.text1 ? (
-				<input
+				<Input
 					type="text"
 					value={stickerParams.text1}
+					placeholder="Text 1"
 					onChange={(e) =>
 						setStickerParams({
 							...stickerParams,
@@ -31,8 +35,9 @@ export const StickerBuilder: React.FC<{
 				/>
 			) : null}
 			{stickerInfo.parameters.text2 ? (
-				<input
+				<Input
 					type="text"
+					placeholder="Text 2"
 					value={stickerParams.text2}
 					onChange={(e) =>
 						setStickerParams({
@@ -43,8 +48,7 @@ export const StickerBuilder: React.FC<{
 				/>
 			) : null}
 			{stickerInfo.parameters.foregroundColor ? (
-				<input
-					type="color"
+				<ColorButton
 					value={stickerParams.foregroundColor}
 					onChange={(e) =>
 						setStickerParams({
@@ -55,8 +59,7 @@ export const StickerBuilder: React.FC<{
 				/>
 			) : null}
 			{stickerInfo.parameters.backgroundColor ? (
-				<input
-					type="color"
+				<ColorButton
 					value={stickerParams.backgroundColor}
 					onChange={(e) =>
 						setStickerParams({
@@ -67,7 +70,7 @@ export const StickerBuilder: React.FC<{
 				/>
 			) : null}
 			{stickerInfo.parameters.url ? (
-				<input
+				<Input
 					type="url"
 					value={stickerParams.url}
 					onChange={(e) =>
@@ -76,9 +79,25 @@ export const StickerBuilder: React.FC<{
 							url: e.target.value,
 						})
 					}
-				/>
+				>
+					<Button className="pointer-events-none rounded-e-none">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							className="size-6"
+						>
+							<path
+								stroke="#fff"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth="2"
+								d="M7 3H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1ZM20 3h-3a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1ZM7 16H4a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1ZM21 16h-3a2 2 0 0 0-2 2v3M21 21v.01M12 7v3a2 2 0 0 1-2 2H7M3 12h.01M12 3h.01M12 16v.01M16 12h1M21 12v.01M12 21v-1"
+							/>
+						</svg>
+					</Button>
+				</Input>
 			) : null}
-			<Canvas stickerInfo={stickerInfo} stickerParams={stickerParams} />
-		</>
+		</Canvas>
 	);
 };

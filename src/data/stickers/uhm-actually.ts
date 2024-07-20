@@ -1,20 +1,8 @@
 import QRCode from "qrcode";
 import { StickerRenderer } from "@/lib/stickers";
 export const uhmActuallySticker: StickerRenderer = async (params, ctx) => {
-	ctx.fillStyle = params.backgroundColor;
+	ctx.fillStyle = "#540D6E";
 	ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-
-	await document.fonts.load("100px IBM Plex Mono");
-	ctx.font = "100px IBM Plex Mono";
-	ctx.textAlign = "center";
-	ctx.textBaseline = "middle";
-	ctx.fillStyle = params.foregroundColor;
-
-	ctx.fillText(
-		"Uhm, actually...",
-		ctx.canvas.width / 2,
-		ctx.canvas.height * 0.2,
-	);
 
 	const code = await QRCode.toDataURL(
 		params.url.length > 0 ? params.url : "https://aufklebung.app",
@@ -25,17 +13,17 @@ export const uhmActuallySticker: StickerRenderer = async (params, ctx) => {
 		},
 	);
 
+	const imgFg = new Image();
+	imgFg.src = "/uhm-actually.svg";
+
 	const img = new Image();
 	img.src = code;
 
 	await new Promise((resolve) => (img.onload = resolve));
+	await new Promise((resolve) => (imgFg.onload = resolve));
 
+	const w = 650;
 	ctx.imageSmoothingEnabled = false;
-	ctx.drawImage(
-		img,
-		ctx.canvas.width / 4,
-		ctx.canvas.width * 0.375,
-		ctx.canvas.width / 2,
-		ctx.canvas.height / 2,
-	);
+	ctx.drawImage(img, (ctx.canvas.width - w) / 2, 60, w, w);
+	ctx.drawImage(imgFg, 0, 0, ctx.canvas.width, ctx.canvas.height);
 };
