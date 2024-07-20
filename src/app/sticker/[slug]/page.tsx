@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { StickerBuilder } from "./sticker-builder";
 import { getStickerInfoBySlug } from "@/lib/stickers";
 
 type Props = {
@@ -8,7 +9,7 @@ type Props = {
 	};
 };
 
-const SingleStickerPage = async ({ params }: Props) => {
+const SingleStickerPage = ({ params }: Props) => {
 	const slug = params.slug;
 	if (!slug) {
 		return notFound();
@@ -30,6 +31,7 @@ const SingleStickerPage = async ({ params }: Props) => {
 				alt={stickerInfo.name}
 				src={stickerInfo.thumbnailSrc}
 			/>
+			<StickerBuilder slug={slug} />
 		</main>
 	);
 };

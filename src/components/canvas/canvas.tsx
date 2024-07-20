@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { Sticker, stickerRenderers } from "@/data/stickers/stickers";
+import { STICKER_SIZE, StickerInfo, StickerParams } from "@/lib/stickers";
 
 export const Canvas: React.FC<{
-	sticker: Sticker;
+	stickerInfo: StickerInfo;
+	stickerParams: StickerParams;
 }> = (props) => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -16,21 +17,15 @@ export const Canvas: React.FC<{
 
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.save();
-
-		const renderer = stickerRenderers[props.sticker.type];
-		renderer(props.sticker, ctx);
-	}, [props.sticker]);
+		props.stickerInfo.renderer(props.stickerParams, ctx);
+	}, [props.stickerInfo, props.stickerParams]);
 
 	return (
 		<div className="flex flex-col items-center gap-8">
 			<canvas
 				ref={canvasRef}
-				width={
-					props.sticker.shape === "rectangle"
-						? props.sticker.size * props.sticker.aspectRatio
-						: props.sticker.size
-				}
-				height={props.sticker.size}
+				width={STICKER_SIZE}
+				height={STICKER_SIZE}
 				className="h-72"
 			/>
 		</div>

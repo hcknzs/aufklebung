@@ -1,24 +1,30 @@
-export type Parameters = {
-	backgroundColor?: string;
-	foregroundColor?: string;
-	text1?: string;
-	text2?: string;
-	url?: string;
+import { antifaStickerRenderer } from "@/data/stickers/antifa";
+import { xNeinDankeStickerRenderer } from "@/data/stickers/x-nein-danke";
+
+export type StickerParams = {
+	backgroundColor: string;
+	foregroundColor: string;
+	text1: string;
+	text2: string;
+	url: string;
 };
 
-type Sticker = {
+export type StickerRenderer = (
+	params: StickerParams,
+	ctx: CanvasRenderingContext2D,
+) => void;
+
+export type StickerInfo = {
 	shape: "square" | "circle";
 	slug: string;
 	name: string;
 	thumbnailSrc: string;
-	parameters: {
-		backgroundColor: boolean;
-		foregroundColor: boolean;
-		text1: boolean;
-		text2: boolean;
-		url: boolean;
-	};
+	parameters: Record<keyof StickerParams, boolean>;
+	initialValues: StickerParams;
+	renderer: StickerRenderer;
 };
+
+export const STICKER_SIZE = 1080;
 
 export const stickers = [
 	{
@@ -34,6 +40,14 @@ export const stickers = [
 			foregroundColor: true,
 			url: false,
 		},
+		initialValues: {
+			backgroundColor: "#000",
+			foregroundColor: "#fff",
+			text1: "Augsburg",
+			text2: "",
+			url: "",
+		},
+		renderer: antifaStickerRenderer,
 	},
 	{
 		slug: "uhm-actually",
@@ -48,6 +62,14 @@ export const stickers = [
 			foregroundColor: false,
 			url: true,
 		},
+		initialValues: {
+			backgroundColor: "#000000",
+			foregroundColor: "#FFFFFF",
+			text1: "",
+			text2: "",
+			url: "https://hcknzs.com",
+		},
+		renderer: xNeinDankeStickerRenderer,
 	},
 	{
 		slug: "-innen",
@@ -62,8 +84,16 @@ export const stickers = [
 			foregroundColor: true,
 			url: false,
 		},
+		initialValues: {
+			backgroundColor: "#000000",
+			foregroundColor: "#FFFFFF",
+			text1: "",
+			text2: "",
+			url: "",
+		},
+		renderer: () => {},
 	},
-] satisfies Array<Sticker>;
+] satisfies Array<StickerInfo>;
 
 export const getStickerInfoBySlug = (slug: string) => {
 	return stickers.find((sticker) => sticker.slug === slug);
