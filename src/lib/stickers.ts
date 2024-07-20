@@ -1,4 +1,6 @@
 import { antifaStickerRenderer } from "@/data/stickers/antifa";
+import { hasstDieAfdRenderer } from "@/data/stickers/hasst-die-afd";
+import { innenRenderer } from "@/data/stickers/innen";
 import { xNeinDankeStickerRenderer } from "@/data/stickers/x-nein-danke";
 
 export type StickerParams = {
@@ -41,13 +43,13 @@ export const stickers = [
 			url: false,
 		},
 		initialValues: {
-			backgroundColor: "#000",
-			foregroundColor: "#fff",
+			backgroundColor: "#19297C",
+			foregroundColor: "#E3B5A4",
 			text1: "Augsburg",
 			text2: "",
 			url: "",
 		},
-		renderer: antifaStickerRenderer,
+		renderer: hasstDieAfdRenderer,
 	},
 	{
 		slug: "antifa",
@@ -107,13 +109,13 @@ export const stickers = [
 			url: false,
 		},
 		initialValues: {
-			backgroundColor: "#000000",
-			foregroundColor: "#FFFFFF",
+			backgroundColor: "#9c1c2b",
+			foregroundColor: "#f8ffe7",
 			text1: "",
 			text2: "",
 			url: "",
 		},
-		renderer: () => {},
+		renderer: innenRenderer,
 	},
 ] satisfies Array<StickerInfo>;
 

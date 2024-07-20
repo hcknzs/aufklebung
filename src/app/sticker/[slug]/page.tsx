@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import { StickerBuilder } from "./sticker-builder";
 import { getStickerInfoBySlug } from "@/lib/stickers";
 
@@ -25,12 +24,6 @@ const SingleStickerPage = ({ params }: Props) => {
 		<main>
 			<h1>{stickerInfo.name}</h1>
 
-			<Image
-				width="200"
-				height="200"
-				alt={stickerInfo.name}
-				src={stickerInfo.thumbnailSrc}
-			/>
 			<StickerBuilder slug={slug} />
 		</main>
 	);

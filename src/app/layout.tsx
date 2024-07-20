@@ -4,6 +4,7 @@ import "@fontsource/ibm-plex-mono/600-italic.css";
 import "@fontsource/ibm-plex-mono/600.css";
 import "@fontsource/ibm-plex-sans/300.css";
 import "@fontsource/ibm-plex-sans/300-italic.css";
+import "@fontsource/bagel-fat-one";
 
 import type { Metadata } from "next";
 import Link from "next/link";
