@@ -1,8 +1,8 @@
+import { typoStyle } from "@/data/stickers/_typo";
 import { antifaStickerRenderer } from "@/data/stickers/antifa";
 import { frownieRenderer } from "@/data/stickers/frownie";
 import { innenRenderer } from "@/data/stickers/innen";
 import { uhmActuallySticker } from "@/data/stickers/uhm-actually";
-import { xLiebtDemokratie } from "@/data/stickers/x-liebt-demokratie";
 
 export type StickerParams = {
 	backgroundColor: string;
@@ -68,8 +68,8 @@ export const stickers = [
 		initialValues: {
 			backgroundColor: "#000",
 			foregroundColor: "#fff",
-			text1: "IIIIIIIIIIIIIIIIIII",
-			text2: "IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII",
+			text1: "Lorem ipsum",
+			text2: "Dolor sit amet!",
 			url: "",
 		},
 		renderer: antifaStickerRenderer,
@@ -77,7 +77,7 @@ export const stickers = [
 	{
 		slug: "ganz-x-liebt-demokratie",
 		shape: "square",
-		name: "Ganz X liebt die Demokratie",
+		name: "Ganz … liebt Demokratie",
 		thumbnailSrc:
 			"https://media3.giphy.com/media/Y01jP8QeLOox2/giphy.gif?cid=47028fa8sx12d824xrvy8zo8bq3w00f23hoj11gqqzus7q0f&ep=v1_gifs&rid=giphy.gif&ct=g",
 		parameters: {
@@ -90,11 +90,37 @@ export const stickers = [
 		initialValues: {
 			backgroundColor: "#ECA72C",
 			foregroundColor: "#44355B",
-			text1: "",
+			text1: "Augsburg",
 			text2: "",
 			url: "",
 		},
-		renderer: xLiebtDemokratie,
+		renderer: typoStyle(
+			["ganz", "liebt", "Demokratie!"],
+			1,
+			"200px 'Bagel Fat One'",
+		),
+	},
+	{
+		slug: "enteignen",
+		shape: "square",
+		name: "… enteignen!",
+		thumbnailSrc:
+			"https://media3.giphy.com/media/Y01jP8QeLOox2/giphy.gif?cid=47028fa8sx12d824xrvy8zo8bq3w00f23hoj11gqqzus7q0f&ep=v1_gifs&rid=giphy.gif&ct=g",
+		parameters: {
+			text1: true,
+			text2: false,
+			backgroundColor: true,
+			foregroundColor: true,
+			url: false,
+		},
+		initialValues: {
+			backgroundColor: "#FF0000",
+			foregroundColor: "#FFFFFF",
+			text1: "Springer",
+			text2: "",
+			url: "",
+		},
+		renderer: typoStyle(["enteignen!"], 0, "200px Anton", 100),
 	},
 	{
 		slug: "uhm-actually",
