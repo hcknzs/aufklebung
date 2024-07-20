@@ -6,24 +6,24 @@ import { stickers } from "@/lib/stickers";
 
 const App = () => {
 	return (
-		<main className="min-h-screen bg-lime p-8 font-plex-mono">
+		<div className="grid grid-cols-2 gap-5 p-5">
 			{stickers.map((sticker) => (
-				<div
+				<Link
 					key={sticker.slug}
-					className="flex items-center justify-center"
+					href={`/sticker/${sticker.slug}`}
+					className="flex flex-col items-center justify-center gap-2 font-bold text-purple-300"
 				>
-					<Link href={`/sticker/${sticker.slug}`}>
-						<Image
-							alt={sticker.name}
-							src={sticker.thumbnailSrc}
-							width="100"
-							height="100"
-						/>
-						<span className="sr-only">{sticker.name}</span>
-					</Link>
-				</div>
+					<Image
+						className={`aspect-square w-full object-cover ${sticker.shape === "circle" ? "rounded-full" : "rounded-md"}`}
+						alt={sticker.name}
+						src={sticker.thumbnailSrc}
+						width="200"
+						height="200"
+					/>
+					<span className="">{sticker.name}</span>
+				</Link>
 			))}
-		</main>
+		</div>
 	);
 };
 
