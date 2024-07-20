@@ -22,7 +22,7 @@ const SingleStickerPage = ({ params }: Props) => {
 
 	return (
 		<main>
-			<h1>{stickerInfo.name}</h1>
+			<h1 className="sr-only">{stickerInfo.name}</h1>
 
 			<StickerBuilder slug={slug} />
 		</main>
