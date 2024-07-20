@@ -22,7 +22,7 @@ export const uhmActuallySticker: StickerRenderer = async (params, ctx) => {
 	await new Promise((resolve) => (img.onload = resolve));
 	await new Promise((resolve) => (imgFg.onload = resolve));
 
-	const w = 600;
+	const w = 650;
 	ctx.imageSmoothingEnabled = false;
 	ctx.drawImage(img, (ctx.canvas.width - w) / 2, 60, w, w);
 	ctx.drawImage(imgFg, 0, 0, ctx.canvas.width, ctx.canvas.height);
