@@ -21,14 +21,29 @@ export const Canvas: React.FC<{
 
 	useEffect(() => {
 		if (!canvasRef.current) return;
-
 		const canvas = canvasRef.current;
-		const ctx = canvas.getContext("2d");
-		if (!ctx) return;
 
+		// create a new canvas
+		const shadowCanvas = document.createElement("canvas");
+		shadowCanvas.width = STICKER_SIZE;
+		shadowCanvas.height = STICKER_SIZE;
+		const ctx = shadowCanvas.getContext("2d");
+
+		if (!ctx) return;
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.save();
-		props.stickerInfo.renderer(props.stickerParams, ctx);
+
+		Promise.all([
+			props.stickerInfo.renderer(props.stickerParams, ctx),
+		]).then(() => {
+			// draw the shadow canvas to the main canvas
+			const mainCtx = canvas.getContext("2d");
+			if (!mainCtx) return;
+
+			mainCtx.clearRect(0, 0, canvas.width, canvas.height);
+			mainCtx.drawImage(shadowCanvas, 0, 0);
+			mainCtx.restore();
+		});
 	}, [props.stickerInfo, props.stickerParams]);
 
 	return (

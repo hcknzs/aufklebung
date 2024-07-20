@@ -10,6 +10,9 @@ export const antifaStickerRenderer: StickerRenderer = async (params, ctx) => {
 		img.onload = resolve;
 	});
 
+	// wait for font to load
+	await document.fonts.load("100px IBM Plex Mono");
+
 	ctx.drawImage(img, 0, 0, ctx.canvas.width, ctx.canvas.height);
 	const config = {
 		ctx,

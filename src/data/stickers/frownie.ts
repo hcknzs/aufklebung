@@ -18,7 +18,6 @@ export const frownieRenderer: StickerRenderer = async (params, ctx) => {
 	const image = new Image();
 
 	image.src = `data:image/svg+xml;base64,${window.btoa(svg)}`;
-	image.onload = () => {
-		ctx.drawImage(image, 0, 0, ctx.canvas.width, ctx.canvas.height);
-	};
+	await new Promise((resolve) => (image.onload = resolve));
+	ctx.drawImage(image, 0, 0, ctx.canvas.width, ctx.canvas.height);
 };

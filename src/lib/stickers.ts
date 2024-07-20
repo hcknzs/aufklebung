@@ -1,8 +1,8 @@
 import { antifaStickerRenderer } from "@/data/stickers/antifa";
 import { frownieRenderer } from "@/data/stickers/frownie";
 import { innenRenderer } from "@/data/stickers/innen";
+import { uhmActuallySticker } from "@/data/stickers/uhm-actually";
 import { xLiebtDemokratie } from "@/data/stickers/x-liebt-demokratie";
-import { xNeinDankeStickerRenderer } from "@/data/stickers/x-nein-danke";
 
 export type StickerParams = {
 	backgroundColor: string;
@@ -15,7 +15,7 @@ export type StickerParams = {
 export type StickerRenderer = (
 	params: StickerParams,
 	ctx: CanvasRenderingContext2D,
-) => void;
+) => Promise<void> | void;
 
 export type StickerInfo = {
 	shape: "square" | "circle";
@@ -110,13 +110,13 @@ export const stickers = [
 			url: true,
 		},
 		initialValues: {
-			backgroundColor: "#000000",
-			foregroundColor: "#FFFFFF",
+			backgroundColor: "#157A6E",
+			foregroundColor: "#82f4BB",
 			text1: "",
 			text2: "",
 			url: "https://hcknzs.com",
 		},
-		renderer: xNeinDankeStickerRenderer,
+		renderer: uhmActuallySticker,
 	},
 	{
 		slug: "-innen",
