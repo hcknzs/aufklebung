@@ -6,6 +6,7 @@ import "@fontsource/ibm-plex-sans/300.css";
 import "@fontsource/ibm-plex-sans/300-italic.css";
 
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
 	title: "Aufklebung",
@@ -18,7 +19,10 @@ const RootLayout = async ({
 }>) => {
 	return (
 		<html lang="en">
-			<body>{children}</body>
+			<body>
+				<Link href="/">HOME</Link>
+				{children}
+			</body>
 		</html>
 	);
 };
