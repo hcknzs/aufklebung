@@ -74,3 +74,58 @@ export const renderCircularText = (
 		ctx.save();
 	}
 };
+
+export const renderWidthScaledText = (props: {
+	ctx: CanvasRenderingContext2D;
+	text: string;
+	letterSpacing: number;
+	font: string;
+	maxWidth: number;
+	y: number;
+	x: number;
+	maxHeight?: number;
+	scaleLetterSpacing?: boolean;
+	fillStyle?: string;
+}) => {
+	const { ctx, text } = props;
+	if (props.font) ctx.font = props.font;
+	if (props.fillStyle) ctx.fillStyle = props.fillStyle;
+	ctx.letterSpacing = props.letterSpacing + "px";
+
+	// check if the text is too wide
+	const predictedWidth = ctx.measureText(text).width;
+	const textPartOfPredictedWidth =
+		predictedWidth - props.letterSpacing * (text.length - 1);
+	const currentFontSize = parseInt(ctx.font);
+
+	let newFontSize = 0;
+
+	if (props.scaleLetterSpacing) {
+		newFontSize = (props.maxWidth / predictedWidth) * currentFontSize;
+	} else {
+		newFontSize =
+			((props.maxWidth - props.letterSpacing * (text.length - 1)) /
+				textPartOfPredictedWidth) *
+			currentFontSize;
+	}
+	ctx.font = `${newFontSize}px sans-serif`;
+
+	// check if the text is too high
+	const predictedHeight =
+		ctx.measureText(text).actualBoundingBoxAscent +
+		ctx.measureText(text).actualBoundingBoxDescent;
+
+	if (props.maxHeight && predictedHeight > props.maxHeight) {
+		newFontSize = (props.maxHeight / predictedHeight) * newFontSize;
+		ctx.font = `${newFontSize}px sans-serif`;
+	}
+	// if the height is too high, the letter spacing is probably not a problem
+	else {
+		if (props.scaleLetterSpacing) {
+			ctx.letterSpacing =
+				props.letterSpacing * (newFontSize / currentFontSize) + "px";
+		}
+	}
+
+	ctx.fillText(text, props.x, props.y);
+};

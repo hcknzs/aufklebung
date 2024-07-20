@@ -1,6 +1,7 @@
 import { antifaStickerRenderer } from "@/data/stickers/antifa";
 import { frownieRenderer } from "@/data/stickers/frownie";
 import { innenRenderer } from "@/data/stickers/innen";
+import { xLiebtDemokratie } from "@/data/stickers/x-liebt-demokratie";
 import { xNeinDankeStickerRenderer } from "@/data/stickers/x-nein-danke";
 
 export type StickerParams = {
@@ -72,6 +73,28 @@ export const stickers = [
 			url: "",
 		},
 		renderer: antifaStickerRenderer,
+	},
+	{
+		slug: "ganz-x-liebt-demokratie",
+		shape: "square",
+		name: "Ganz X liebt die Demokratie",
+		thumbnailSrc:
+			"https://media3.giphy.com/media/Y01jP8QeLOox2/giphy.gif?cid=47028fa8sx12d824xrvy8zo8bq3w00f23hoj11gqqzus7q0f&ep=v1_gifs&rid=giphy.gif&ct=g",
+		parameters: {
+			text1: true,
+			text2: false,
+			backgroundColor: true,
+			foregroundColor: true,
+			url: false,
+		},
+		initialValues: {
+			backgroundColor: "#ECA72C",
+			foregroundColor: "#44355B",
+			text1: "",
+			text2: "",
+			url: "",
+		},
+		renderer: xLiebtDemokratie,
 	},
 	{
 		slug: "uhm-actually",
