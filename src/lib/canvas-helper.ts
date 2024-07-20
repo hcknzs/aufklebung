@@ -87,7 +87,9 @@ export const renderWidthScaledText = (props: {
 	scaleLetterSpacing?: boolean;
 	fillStyle?: string;
 }) => {
-	const { ctx, text } = props;
+	const { ctx, text, font } = props;
+	const fontFamily = font.split("px ")[1];
+
 	if (props.font) ctx.font = props.font;
 	if (props.fillStyle) ctx.fillStyle = props.fillStyle;
 	ctx.letterSpacing = props.letterSpacing + "px";
@@ -108,7 +110,7 @@ export const renderWidthScaledText = (props: {
 				textPartOfPredictedWidth) *
 			currentFontSize;
 	}
-	ctx.font = `${newFontSize}px sans-serif`;
+	ctx.font = `${newFontSize}px ${fontFamily}`;
 
 	// check if the text is too high
 	const predictedHeight =
@@ -117,7 +119,7 @@ export const renderWidthScaledText = (props: {
 
 	if (props.maxHeight && predictedHeight > props.maxHeight) {
 		newFontSize = (props.maxHeight / predictedHeight) * newFontSize;
-		ctx.font = `${newFontSize}px sans-serif`;
+		ctx.font = `${newFontSize}px ${fontFamily}`;
 	}
 	// if the height is too high, the letter spacing is probably not a problem
 	else {
@@ -128,4 +130,5 @@ export const renderWidthScaledText = (props: {
 	}
 
 	ctx.fillText(text, props.x, props.y);
+	return predictedHeight;
 };
