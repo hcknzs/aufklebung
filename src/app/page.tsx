@@ -1,13 +1,10 @@
 "use client";
 import { useState } from "react";
 import { Canvas } from "@/components/canvas/canvas";
-import { initialStickerParams, Sticker } from "@/data/stickers";
+import { Sticker, stickerConfig } from "@/data/stickers";
 
 const App = () => {
-	const [sticker, setSticker] = useState<Sticker>({
-		type: "antifa",
-		params: initialStickerParams.antifa,
-	});
+	const [sticker, setSticker] = useState<Sticker>(stickerConfig.antifa);
 
 	return (
 		<main className="min-h-screen bg-lime p-8 font-plex-mono">
@@ -26,16 +23,18 @@ const App = () => {
 				<select
 					value={sticker.type}
 					onChange={(e) =>
-						setSticker({
-							type: e.target.value as Sticker["type"],
-							params: initialStickerParams[
-								e.target.value as Sticker["type"]
+						setSticker(
+							stickerConfig[
+								e.target.value as keyof typeof stickerConfig
 							],
-						})
+						)
 					}
 				>
-					<option value="antifa">Antifa</option>
-					<option value="xNeinDanke">X Nein Danke</option>
+					{Object.keys(stickerConfig).map((key) => (
+						<option key={key} value={key}>
+							{key}
+						</option>
+					))}
 				</select>
 
 				<Canvas sticker={sticker} />
