@@ -21,14 +21,27 @@ export const hasstDieAfdRenderer: StickerRenderer = async (params, ctx) => {
 	ctx.fillStyle = params.foregroundColor;
 	ctx.font = `${fontSize}px 'Bagel Fat One'`;
 	const halfWidth = ctx.canvas.width / 2;
-	const radius = halfWidth - 80;
 
-	renderCircularText({
+	const config = {
 		ctx,
-		text: `Ganz ${params.text1}`,
-		radius,
-		startAngle: -Math.PI / 2,
-		angleCalculation: "fraction",
-		totalAngle: Math.PI * 0.6,
+		radius: halfWidth - 100,
+		fillStyle: params.foregroundColor,
+		font: "100px 'Bagel Fat One'",
+		angleCalculation: "auto",
+		letterAngle: 0.175,
+	} as const;
+
+	// top text
+	renderCircularText({
+		...config,
+		text: `Ganz ${params.text1}`.toUpperCase(),
+		position: "top",
+	});
+
+	// bottom text
+	renderCircularText({
+		...config,
+		text: "hasst die AfD!".toUpperCase(),
+		position: "bottom",
 	});
 };
