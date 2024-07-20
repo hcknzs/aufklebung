@@ -23,6 +23,7 @@ export const renderCircularText = (
 	if (props.font) ctx.font = props.font;
 	if (props.fillStyle) ctx.fillStyle = props.fillStyle;
 	ctx.textBaseline = "middle";
+	ctx.textAlign = "center";
 
 	if (props.angleCalculation === "fraction") {
 		const angle = props.totalAngle;
@@ -43,7 +44,7 @@ export const renderCircularText = (
 		ctx.translate(ctx.canvas.width / 2, ctx.canvas.height / 2);
 
 		if (props.position === "top") {
-			ctx.rotate(-totalAngle / 2 - props.letterAngle);
+			ctx.rotate(-totalAngle / 2 - props.letterAngle / 2);
 
 			for (const char of text) {
 				ctx.rotate(props.letterAngle);
@@ -55,15 +56,16 @@ export const renderCircularText = (
 		} else {
 			let fontSize = parseInt(ctx.font);
 			if (isNaN(fontSize)) fontSize = 0;
-
-			ctx.rotate(totalAngle / 2 + props.letterAngle);
+			ctx.rotate(Math.PI + totalAngle / 2 + props.letterAngle / 2);
 
 			for (const char of text) {
 				ctx.rotate(-props.letterAngle);
 				ctx.save();
 				// the 0.1 * fontSize makes it look more symmetrical
-				ctx.translate(0, radius + 0.1 * fontSize);
+				ctx.translate(0, -radius - fontSize * 0.1);
+				ctx.rotate(Math.PI);
 				ctx.fillText(char, 0, 0);
+
 				ctx.restore();
 			}
 		}

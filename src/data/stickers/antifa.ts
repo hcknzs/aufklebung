@@ -15,9 +15,9 @@ export const antifaStickerRenderer: StickerRenderer = async (params, ctx) => {
 		ctx,
 		radius: halfWidth - 60,
 		fillStyle: params.foregroundColor,
-		font: "80px IBM Plex Mono",
+		font: "100px IBM Plex Mono",
 		angleCalculation: "auto",
-		letterAngle: 0.1,
+		letterAngle: 0.135,
 	} as const;
 
 	// top text
