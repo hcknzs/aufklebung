@@ -187,8 +187,7 @@ export const stickers = [
 		slug: "uhm-actually",
 		shape: "square",
 		name: "Uhm, actually...",
-		thumbnailSrc:
-			"https://media2.giphy.com/media/ZJaXOsbM012mRodFiQ/giphy.gif?cid=47028fa8sx12d824xrvy8zo8bq3w00f23hoj11gqqzus7q0f&ep=v1_gifs&rid=giphy.gif&ct=g",
+		thumbnailSrc: "/uhm-actually.gif",
 		parameters: {
 			text1: false,
 			text2: false,
