@@ -5,7 +5,7 @@ export const ColorButton: React.FC<{
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }> = ({ value, onChange }) => {
 	return (
-		<label className="flex w-min cursor-pointer overflow-hidden rounded-md">
+		<label className="flex cursor-pointer overflow-hidden rounded-md">
 			<span className="sr-only">Farbe ändern</span>
 			<input
 				className="absolute w-4 translate-x-full opacity-0"

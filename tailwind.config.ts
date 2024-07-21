@@ -154,6 +154,10 @@ const config = {
 				".debug-border": {
 					border: "1px solid red",
 				},
+				".emoji-white": {
+					color: "transparent",
+					textShadow: "0 0 white",
+				},
 			});
 		}),
 	],

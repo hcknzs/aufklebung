@@ -6,6 +6,7 @@ import { Canvas } from "@/components/canvas/canvas";
 import { Button } from "@/components/ui/button";
 import { ColorButton } from "@/components/color-button";
 import { Input } from "@/components/ui/input";
+import { ColorRandomizer } from "@/components/color-randomizer";
 
 export const StickerBuilder: React.FC<{
 	slug: (typeof stickers)[number]["slug"];
@@ -20,7 +21,41 @@ export const StickerBuilder: React.FC<{
 
 	return (
 		<Canvas stickerInfo={stickerInfo} stickerParams={stickerParams}>
-			{/* TODO: make this nice (code cleanup, debouncing, layout, performance) */}
+			{stickerInfo.parameters.foregroundColor ? (
+				<ColorButton
+					value={stickerParams.foregroundColor}
+					onChange={(e) =>
+						setStickerParams({
+							...stickerParams,
+							foregroundColor: e.target.value,
+						})
+					}
+				/>
+			) : null}
+			{stickerInfo.parameters.backgroundColor ? (
+				<ColorButton
+					value={stickerParams.backgroundColor}
+					onChange={(e) =>
+						setStickerParams({
+							...stickerParams,
+							backgroundColor: e.target.value,
+						})
+					}
+				/>
+			) : null}
+			{stickerInfo.parameters.backgroundColor &&
+			// eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+			stickerInfo.parameters.foregroundColor ? (
+				<ColorRandomizer
+					onChange={([backgroundColor, foregroundColor]) => {
+						setStickerParams({
+							...stickerParams,
+							backgroundColor,
+							foregroundColor,
+						});
+					}}
+				/>
+			) : null}
 			{stickerInfo.parameters.text1 ? (
 				<Input
 					type="text"
@@ -43,28 +78,6 @@ export const StickerBuilder: React.FC<{
 						setStickerParams({
 							...stickerParams,
 							text2: e.target.value,
-						})
-					}
-				/>
-			) : null}
-			{stickerInfo.parameters.foregroundColor ? (
-				<ColorButton
-					value={stickerParams.foregroundColor}
-					onChange={(e) =>
-						setStickerParams({
-							...stickerParams,
-							foregroundColor: e.target.value,
-						})
-					}
-				/>
-			) : null}
-			{stickerInfo.parameters.backgroundColor ? (
-				<ColorButton
-					value={stickerParams.backgroundColor}
-					onChange={(e) =>
-						setStickerParams({
-							...stickerParams,
-							backgroundColor: e.target.value,
 						})
 					}
 				/>

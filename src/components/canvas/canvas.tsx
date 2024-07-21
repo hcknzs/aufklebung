@@ -1,13 +1,16 @@
 "use client";
-import { ReactNode, useEffect, useRef } from "react";
+import { Children, ReactNode, useEffect, useRef } from "react";
 import { Button } from "../ui/button";
 import { STICKER_SIZE, StickerInfo, StickerParams } from "@/lib/stickers";
+import { cn } from "@/lib/utils";
 
 export const Canvas: React.FC<{
 	stickerInfo: StickerInfo;
 	stickerParams: StickerParams;
 	children: ReactNode;
 }> = (props) => {
+	const children = Children.toArray(props.children);
+
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 
 	const handleDownload = () => {
@@ -60,26 +63,36 @@ export const Canvas: React.FC<{
 					/>
 				</div>
 			</div>
-			<div className="flex flex-wrap justify-stretch gap-5 [&>*]:min-w-full [&>*]:flex-1 [&>*]:min-[360px]:min-w-[calc(50%-10px)] [&>*]:sm:min-w-min">
-				{props.children}
-				<Button type="button" onClick={handleDownload}>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						className="mr-2 size-6"
-					>
-						<path
-							stroke="#fff"
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							strokeWidth="2"
-							d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"
-						/>
-					</svg>
-					Download
-				</Button>
+			<div
+				className={cn(
+					"grid grid-cols-1 gap-5",
+					children.length === 2 && "grid-cols-2",
+					children.length > 2 && "grid-cols-3",
+				)}
+			>
+				{children}
 			</div>
+			<Button
+				type="button"
+				onClick={handleDownload}
+				className="mt-5 w-full"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					className="mr-2 size-6"
+				>
+					<path
+						stroke="#fff"
+						strokeLinecap="round"
+						strokeLinejoin="round"
+						strokeWidth="2"
+						d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"
+					/>
+				</svg>
+				Download
+			</Button>
 		</>
 	);
 };
