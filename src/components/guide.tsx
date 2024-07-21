@@ -19,18 +19,18 @@ export const Guide: React.FC<{ className?: string }> = (props) => {
 					<span className={emphasized}>Anpassen!</span>
 				</Li>
 				<Li>
-					<span className={emphasized}>Herunterladen!</span> — am
+					<span className={emphasized}>Herunterladen!</span> — Am
 					einfachsten auf dein Handy oder einen USB-Stick / SD-Karte
 				</Li>
 				<Li>
-					<span className={emphasized}>Drucken!</span>— Am einfachsten
-					geht das in einem Drogeriemarkt in deiner Nähe. Achte auf
-					das Format (rund oder eckig) und die Größe!
+					<span className={emphasized}>Drucken!</span> — Am
+					einfachsten geht das in einem Drogeriemarkt in deiner Nähe.
+					Achte auf das Format (rund oder eckig) und die Größe!
 				</Li>
 				<Li>
-					<span className={emphasized}>Aufkleben!</span>
-					In der Stadt, auf den Laptop, oder wo auch immer du möchtest
-					:-)
+					<span className={emphasized}>Aufkleben!</span> — In der
+					Stadt, auf den Laptop, oder wo auch immer du
+					möchtest&nbsp;:-)
 				</Li>
 			</ol>
 		</div>
