@@ -229,7 +229,7 @@ export const stickers = [
 		slug: "hcknzs",
 		shape: "square",
 		name: "HCK.NZS",
-		thumbnailSrc: "/innen.gif",
+		thumbnailSrc: "/hcknzs.gif",
 		parameters: {
 			text1: false,
 			text2: false,
