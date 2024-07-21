@@ -1,4 +1,5 @@
 import { typoStyle } from "@/data/stickers/_typo";
+import { alternativeRenderer } from "@/data/stickers/alternative";
 import { antifaStickerRenderer } from "@/data/stickers/antifa";
 import { frownieRenderer } from "@/data/stickers/frownie";
 import { innenRenderer } from "@/data/stickers/innen";
@@ -132,6 +133,35 @@ export const stickers = [
 		}),
 	},
 	{
+		slug: "wegstickern",
+		shape: "square",
+		name: "💩 einfach wegstickern!",
+		thumbnailSrc: "/wegstickern.gif",
+		parameters: {
+			text1: true,
+			text2: false,
+			backgroundColor: true,
+			foregroundColor: true,
+			url: false,
+		},
+		initialValues: {
+			backgroundColor: "#5C573E",
+			foregroundColor: "#C8D96F",
+			text1: "Nazi",
+			text2: "",
+			url: "",
+		},
+		renderer: typoStyle({
+			font: "200px 'Anton'",
+			gap: 40,
+			margin: 80,
+			letterSpacing: 0,
+			textPieces: ["einfach", "wegstickern!"],
+			textOffset: 0,
+			textSuffix: "-💩",
+		}),
+	},
+	{
 		slug: "uhm-actually",
 		shape: "square",
 		name: "Uhm, actually...",
@@ -173,6 +203,27 @@ export const stickers = [
 			url: "",
 		},
 		renderer: innenRenderer,
+	},
+	{
+		slug: "alternative",
+		shape: "circle",
+		name: "… ist keine Alternative",
+		thumbnailSrc: "/alternative.gif",
+		parameters: {
+			text1: true,
+			text2: false,
+			backgroundColor: true,
+			foregroundColor: true,
+			url: false,
+		},
+		initialValues: {
+			backgroundColor: "#F7F4F3",
+			foregroundColor: "#E05263",
+			text1: "Nationalismus",
+			text2: "",
+			url: "",
+		},
+		renderer: alternativeRenderer,
 	},
 ] satisfies Array<StickerInfo>;
 

@@ -11,6 +11,7 @@ export const typoStyle =
 	({
 		textPieces,
 		textOffset,
+		textSuffix,
 		font,
 		gap,
 		margin,
@@ -18,6 +19,7 @@ export const typoStyle =
 	}: {
 		textPieces: Array<string>;
 		textOffset: number;
+		textSuffix?: string;
 		font: string;
 		gap: number;
 		margin: number;
@@ -38,11 +40,11 @@ export const typoStyle =
 		ctx.font = font;
 		ctx.letterSpacing = letterSpacing + "px";
 
-		const text = params.text1.length < 5 ? "xxxxx" : params.text1;
+		const text = params.text1.length < 4 ? "xxxxx" : params.text1;
 
 		const words = [
 			...textPieces.slice(0, textOffset),
-			text,
+			textSuffix ? text + textSuffix : text,
 			...textPieces.slice(textOffset),
 		];
 
