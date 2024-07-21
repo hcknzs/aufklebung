@@ -29,6 +29,7 @@ export type StickerInfo = {
 	parameters: Record<keyof StickerParams, boolean>;
 	initialValues: StickerParams;
 	renderer: StickerRenderer;
+	description?: string;
 };
 
 export const STICKER_SIZE = 1080;
@@ -202,6 +203,8 @@ export const stickers = [
 			text2: "",
 			url: "https://de.wikipedia.org/wiki/COVID-19",
 		},
+		description:
+			"Wenn du mal wieder draußen unterwegs bist und Falschinformationen auf Wahlplakaten, an Zetteln oder anderen Stickern siehst, kannst du hier mit Links zu Quellen dagegenhalten!",
 		renderer: uhmActuallySticker,
 	},
 	{

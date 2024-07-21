@@ -44,7 +44,9 @@ const SingleStickerPage = ({ params }: Props) => {
 				</svg>
 				Zurück
 			</Link>
-
+			{stickerInfo.description ? (
+				<div className="mt-5">{stickerInfo.description}</div>
+			) : null}
 			<StickerBuilder slug={slug} />
 		</div>
 	);
