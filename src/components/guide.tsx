@@ -1,39 +1,37 @@
 import { cn } from "@/lib/utils";
 
+const emphasized = "bg-white px-1 text-primary-500 font-bold";
+
+const Li = ({ children }: { children: React.ReactNode }) => (
+	<li className="mt-3">{children}</li>
+);
+
 export const Guide: React.FC<{ className?: string }> = (props) => {
 	return (
 		<div
 			className={cn(
-				"mb-5 mt-5 flex flex-col gap-4 lg:mb-10",
+				"prose mb-5 mt-5 flex flex-col gap-4 lg:mb-10",
 				props.className,
 			)}
 		>
-			<h1 className="font-bold">Das ist zu tun:</h1>
 			<ol className="list-decimal pl-5">
-				<li>
-					<span className="bg-primary px-1 text-white">
-						Sticker anpassen
-					</span>
-				</li>
-				<li>
-					<span className="bg-primary px-1 text-white">
-						Sticker herunterladen
-					</span>{" "}
-					- auf dein Handy oder Stick
-				</li>
-				<li>
-					<span className="bg-primary px-1 text-white">
-						Sticker ausdrucken
-					</span>{" "}
-					- Am einfachsten geht das in deinem nächsten Drogeriemarkt
-				</li>
-				<li>
-					<span className="bg-primary px-1 text-white">
-						Sticker aufkleben
-					</span>{" "}
-					- In der Stadt, auf den Laptop, oder wo auch immer du
-					möchtest
-				</li>
+				<Li>
+					<span className={emphasized}>Anpassen!</span>
+				</Li>
+				<Li>
+					<span className={emphasized}>Herunterladen!</span> — am
+					einfachsten auf dein Handy oder einen USB-Stick / SD-Karte
+				</Li>
+				<Li>
+					<span className={emphasized}>Drucken!</span>— Am einfachsten
+					geht das in einem Drogeriemarkt in deiner Nähe. Achte auf
+					das Format (rund oder eckig) und die Größe!
+				</Li>
+				<Li>
+					<span className={emphasized}>Aufkleben!</span>
+					In der Stadt, auf den Laptop, oder wo auch immer du möchtest
+					:-)
+				</Li>
 			</ol>
 		</div>
 	);
