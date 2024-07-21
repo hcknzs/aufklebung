@@ -1,9 +1,11 @@
 import { typoStyle } from "@/data/stickers/_typo";
 import { alternativeRenderer } from "@/data/stickers/alternative";
+import { aluhutRenderer } from "@/data/stickers/aluhut";
 import { antifaStickerRenderer } from "@/data/stickers/antifa";
 import { frownieRenderer } from "@/data/stickers/frownie";
 import { hcknzsRenderer } from "@/data/stickers/hcknzs";
 import { innenRenderer } from "@/data/stickers/innen";
+import { lgbtqRenderer } from "@/data/stickers/lgbtq";
 import { uhmActuallySticker } from "@/data/stickers/uhm-actually";
 
 export type StickerParams = {
@@ -36,8 +38,7 @@ export const stickers = [
 		slug: "frownie",
 		shape: "circle",
 		name: "Frownie",
-		thumbnailSrc:
-			"https://media2.giphy.com/media/ZJaXOsbM012mRodFiQ/giphy.gif?cid=47028fa8sx12d824xrvy8zo8bq3w00f23hoj11gqqzus7q0f&ep=v1_gifs&rid=giphy.gif&ct=g",
+		thumbnailSrc: "/frownie.png",
 		parameters: {
 			text1: false,
 			text2: false,
@@ -58,8 +59,7 @@ export const stickers = [
 		slug: "antifa",
 		shape: "circle",
 		name: "Antifaschistische Aktion",
-		thumbnailSrc:
-			"https://media2.giphy.com/media/ZJaXOsbM012mRodFiQ/giphy.gif?cid=47028fa8sx12d824xrvy8zo8bq3w00f23hoj11gqqzus7q0f&ep=v1_gifs&rid=giphy.gif&ct=g",
+		thumbnailSrc: "/antifa.gif",
 		parameters: {
 			text1: true,
 			text2: true,
@@ -75,6 +75,27 @@ export const stickers = [
 			url: "",
 		},
 		renderer: antifaStickerRenderer,
+	},
+	{
+		slug: "aluhut",
+		shape: "circle",
+		name: "Aluhut",
+		thumbnailSrc: "/aluhut.gif",
+		parameters: {
+			text1: true,
+			text2: true,
+			backgroundColor: false,
+			foregroundColor: false,
+			url: false,
+		},
+		initialValues: {
+			backgroundColor: "#000",
+			foregroundColor: "#fff",
+			text1: "Ein Aluhut",
+			text2: "tut selten gut",
+			url: "",
+		},
+		renderer: aluhutRenderer,
 	},
 	{
 		slug: "ganz-x-liebt-demokratie",
@@ -108,8 +129,7 @@ export const stickers = [
 		slug: "enteignen",
 		shape: "square",
 		name: "… enteignen!",
-		thumbnailSrc:
-			"https://media3.giphy.com/media/Y01jP8QeLOox2/giphy.gif?cid=47028fa8sx12d824xrvy8zo8bq3w00f23hoj11gqqzus7q0f&ep=v1_gifs&rid=giphy.gif&ct=g",
+		thumbnailSrc: "/enteignen.gif",
 		parameters: {
 			text1: true,
 			text2: false,
@@ -246,6 +266,27 @@ export const stickers = [
 			url: "",
 		},
 		renderer: alternativeRenderer,
+	},
+	{
+		slug: "lgbtq",
+		shape: "circle",
+		name: "🏳️‍🌈",
+		thumbnailSrc: "/lgbtq.gif",
+		parameters: {
+			text1: true,
+			text2: false,
+			backgroundColor: false,
+			foregroundColor: false,
+			url: false,
+		},
+		initialValues: {
+			backgroundColor: "",
+			foregroundColor: "",
+			text1: "LOVE",
+			text2: "",
+			url: "",
+		},
+		renderer: lgbtqRenderer,
 	},
 ] satisfies Array<StickerInfo>;
 
