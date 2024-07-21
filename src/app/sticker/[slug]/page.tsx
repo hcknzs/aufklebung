@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { StickerBuilder } from "./sticker-builder";
 import { getStickerInfoBySlug } from "@/lib/stickers";
+import { Guide } from "@/components/guide";
 
 type Props = {
 	params: {
@@ -48,6 +49,8 @@ const SingleStickerPage = ({ params }: Props) => {
 				<div className="mt-5">{stickerInfo.description}</div>
 			) : null}
 			<StickerBuilder slug={slug} />
+
+			<Guide />
 		</div>
 	);
 };

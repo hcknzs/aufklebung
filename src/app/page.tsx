@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { stickers } from "@/lib/stickers";
+import { Guide } from "@/components/guide";
 
 const App = () => {
 	return (
@@ -25,6 +26,7 @@ const App = () => {
 					Widerstands und der Solidarität.
 				</p>
 			</div>
+			<Guide className="px-5" />
 			<div className="grid grid-cols-2 gap-5 p-5">
 				{stickers.map((sticker) => (
 					<Link
