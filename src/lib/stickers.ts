@@ -2,6 +2,7 @@ import { typoStyle } from "@/data/stickers/_typo";
 import { alternativeRenderer } from "@/data/stickers/alternative";
 import { antifaStickerRenderer } from "@/data/stickers/antifa";
 import { frownieRenderer } from "@/data/stickers/frownie";
+import { hcknzsRenderer } from "@/data/stickers/hcknzs";
 import { innenRenderer } from "@/data/stickers/innen";
 import { uhmActuallySticker } from "@/data/stickers/uhm-actually";
 
@@ -203,6 +204,27 @@ export const stickers = [
 			url: "",
 		},
 		renderer: innenRenderer,
+	},
+	{
+		slug: "hcknzs",
+		shape: "square",
+		name: "HCK.NZS",
+		thumbnailSrc: "/innen.gif",
+		parameters: {
+			text1: false,
+			text2: false,
+			backgroundColor: true,
+			foregroundColor: true,
+			url: false,
+		},
+		initialValues: {
+			backgroundColor: "#dbfe87",
+			foregroundColor: "#5852bf",
+			text1: "",
+			text2: "",
+			url: "",
+		},
+		renderer: hcknzsRenderer,
 	},
 	{
 		slug: "alternative",
