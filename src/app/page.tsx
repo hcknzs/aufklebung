@@ -25,7 +25,7 @@ const App = () => {
 					Widerstands und der Solidarität.
 				</p>
 			</div>
-			<div className="grid grid-cols-2 gap-5 p-5">
+			<div className="grid grid-cols-2 gap-6 p-5">
 				{stickers.map((sticker) => (
 					<Link
 						key={sticker.slug}
@@ -33,15 +33,24 @@ const App = () => {
 						className="flex flex-col items-center justify-center gap-2 font-bold text-purple-300"
 					>
 						<Image
-							className={`aspect-square w-full object-cover ${sticker.shape === "circle" ? "rounded-full" : "rounded-md"}`}
+							className={`mb-2 aspect-square w-full object-cover ${sticker.shape === "circle" ? "rounded-full" : "rounded-md"}`}
 							alt={sticker.name}
 							src={sticker.thumbnailSrc}
 							width="200"
 							height="200"
 						/>
-						<span className="">{sticker.name}</span>
+						<span>{sticker.name}</span>
 					</Link>
 				))}
+				<Link
+					href="mailto:hello@aufklebung.app"
+					className="flex flex-col items-center justify-center gap-2 font-bold text-purple-300"
+				>
+					<span className="mb-2 flex aspect-square w-full items-center justify-center rounded-full border-2 border-dashed border-gray-400 font-plex-mono text-[4rem] text-gray-400">
+						+
+					</span>
+					<span>Eigene Ideen?</span>
+				</Link>
 			</div>
 		</>
 	);
