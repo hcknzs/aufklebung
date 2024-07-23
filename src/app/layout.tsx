@@ -8,6 +8,7 @@ import "@fontsource/ibm-plex-sans/600.css";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 
 export const metadata: Metadata = {
 	title: "Aufklebung",
@@ -73,6 +74,11 @@ const RootLayout = async ({
 					</footer>
 				</div>
 			</body>
+			<Script
+				data-goatcounter="https://aufklebung.goatcounter.com/count"
+				src="//gc.zgo.at/count.js"
+				strategy="lazyOnload"
+			/>
 		</html>
 	);
 };
