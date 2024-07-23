@@ -32,6 +32,19 @@ export const Guide: React.FC<{ className?: string }> = (props) => {
 					Stadt, auf den Laptop, oder wo auch immer du
 					möchtest&nbsp;:-)
 				</Li>
+				<Li>
+					<span className={emphasized}>Teilen!</span> — Zeigt uns eure
+					Kreationen auf{" "}
+					<a
+						href="https://www.instagram.com/aufklebung.app/"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="text-primary-500 underline"
+					>
+						📸 Instagram
+					</a>
+					!
+				</Li>
 			</ol>
 		</div>
 	);

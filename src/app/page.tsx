@@ -38,6 +38,7 @@ const App = () => {
 							className={`mb-2 aspect-square w-full object-cover ${sticker.shape === "circle" ? "rounded-full" : "rounded-md"}`}
 							alt={sticker.name}
 							src={sticker.thumbnailSrc}
+							unoptimized
 							width="200"
 							height="200"
 						/>
